@@ -2,6 +2,8 @@
 #include <string>
 #include <SFML/Graphics.hpp>
 
+// example main code until written
+// (gotten from SFML website)
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
