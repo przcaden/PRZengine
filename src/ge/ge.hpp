@@ -2,6 +2,7 @@
 #define GE_HPP
 
 #include <SFML/Graphics.hpp>
+#include "state.hpp"
 
 namespace ge {
     struct Data {
@@ -9,6 +10,7 @@ namespace ge {
         sf::Clock clock;
         unsigned int width;
         unsigned int height;
+        state::Handler state;
     };
 
     inline void createWindow(Data *data, unsigned int w, unsigned int h, const char *title) {
@@ -25,17 +27,18 @@ namespace ge {
         // Loop while graphics window is open
         while(data->window.isOpen()) {
             new_dt = data->clock.getElapsedTime().asSeconds();
-            elapsed = new_dt = dt;
+            elapsed += new_dt - dt;
             dt = new_dt;
 
             // Update time if exceeding rate
             if(elapsed > ups) {
+                data->state.update();
                 elapsed -= ups;
             }
 
             // Render
             data->window.clear();
-            // handler->draw();
+            data->state.render();
             data->window.display();
         }
     }
