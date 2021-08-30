@@ -1,11 +1,10 @@
 #include <cmath>
-#include <string>
 
 // Basic vector
 struct Vec {
 	float x;
 	float y;
-	Vec(float _x, float _y) { x = _y; y = _y; }
+	Vec(float _x, float _y) { x = _x; y = _y; }
 
 	// Overload ops
 	Vec& operator-(const Vec& v) {
@@ -25,6 +24,7 @@ struct Vec {
 	}
 };
 
+// Parent class for any object type
 class Object {
 protected:
 	float restitution;
@@ -50,6 +50,7 @@ public:
 	}
 };
 
+// Class for circles, child of object
 class Circle : public Object {
 private:
 	float radius;
@@ -65,10 +66,10 @@ public:
 	float rad() { return radius; }
 };
 
-// Checks if two circles begin to intercept. Utilizes better distance calc
+// Checks if two circles begin to intercept.
 bool circleIntercept(Circle a, Circle b) {
 	float r = pow(a.rad() + b.rad(), 2);
-	return r < (pow(a.getx() - b.getx(), 2) + pow(a.gety() - b.gety(), 2));
+	return r < (pow(a.getx() - b.getx(), 2) + pow(a.gety() - b.gety(), 2)); // r < distance between a and b
 }
 
 // Run following function upon collision
@@ -94,6 +95,7 @@ void rebound(Object a, Object b) {
 	b.setvel(newvel_b);
 }
 
+// Holds data for collisions
 struct Manifold {
 	Object* a;
 	Object* b;

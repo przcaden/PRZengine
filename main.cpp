@@ -1,7 +1,7 @@
 #include <cmath>
 #include <string>
 #include <SFML/Graphics.hpp>
-#include <ge/ge.hpp>
+#include "src/include/ge/ge.hpp"
 
 class Temp : public ge::State {
 public:
@@ -12,7 +12,7 @@ public:
 int main() {
     // create example window
     ge::Data *data = new ge::Data();
-    ge::createWindow(data, 1920, 1080, "temp");
+    ge::createWindow(data, 300, 300, "temp");
 
     data->state.addState(new Temp());
 

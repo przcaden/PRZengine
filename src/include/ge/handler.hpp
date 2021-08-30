@@ -17,7 +17,7 @@ namespace ge {
                 for (State *state : states) { state->render(); }
             }
 
-            void addState(State *state) {
+            void addState(State* state) {
                 states.push_back(state);
             }
             void removeState() {
@@ -26,11 +26,11 @@ namespace ge {
                 states.erase(states.begin() + (states.size()-1));
             }
             void clearStates() {
-                for (State *state : states) { delete state; }
+                for (State* state : states) { delete state; }
                 states.clear();
             }
         private:
-            std::vector<State *> states;
+            std::vector<State*> states;
         };
     }
 }
