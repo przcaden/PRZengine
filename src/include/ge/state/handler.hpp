@@ -17,7 +17,9 @@ namespace ge {
                 for (State *state : states) { state->render(); }
             }
 
-            void addState(State* state) {
+            void addState(State* state, bool removing = true) {
+                if (removing)
+                    removeState();
                 states.push_back(state);
             }
             void removeState() {

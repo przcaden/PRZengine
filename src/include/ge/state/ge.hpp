@@ -3,6 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "state.hpp"
+#include "ge/resource/resource.hpp"
 
 namespace ge {
     struct Data {
